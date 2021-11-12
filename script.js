@@ -16,7 +16,7 @@ function adicionar() {
     console.log(`${codigo} ${descricao} ${valor}`)
 
     for (let i of tabela.children) {
-        console.log(i.children[0]. )
+        console.log(i.children[0].innerHTML > codigo )
 
         // console.log(i.innerHTML)
     }
