@@ -7,41 +7,50 @@
 	<title>Plano de Contas</title>
 
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"crossorigin="anonymous">
-	<link href="style.css" rel="stylesheet" type="text/css" />
+	<link href="style.css" rel="stylesheet" type="text/css"/>
+	<link rel="shortcut icon" type="imagex/png" href="https://uploaddeimagens.com.br/imagens/C7-n9lk">
+
 </head>
 
 <body>
 	<hr>
-	<h1 class="text-center">PLANO DE CONTAS</h1>
+	    <h1 class="text-center">PLANO DE CONTAS</h1>
 	<hr>
-    <p>Teste git</p>
+
     <!-- introduzir conta -->
     <div class="container">
-        <form onsubmit="adicionar()">
-            <div class="row">
-                <div class="col-md-2">
-                    <input id="codigo"  type="text" class="form-control" placeholder="Código" required>
-                </div>
-        
-                <div class="col-md-6">
-                    <input id="descricao" type="text" class="form-control" placeholder="Descrição" required>
-                </div>
-
-                <div class="col-md-2">
-                    <input id="valor" type="text" class="form-control" placeholder="Valor" required>
-                </div>
-
-                <div class="col">
-                    <button class="btn btn-primary">Adicionar</button>
+        <div class="row">
+            <div class="col-md-2">
+                <input id="codigo"  type="text" class="form-control" placeholder="Código">
+                <div id="valCod" class="invalid-feedback">
+                    Não pode ser vazio
                 </div>
             </div>
-        </form>
+    
+            <div class="col-md-6">
+                <input id="descricao" type="text" class="form-control" placeholder="Descrição">
+                <div id="valDes" class="invalid-feedback">
+                    Não pode ser vazio
+                </div>
+            </div>
+
+            <div class="col-md-2">
+                <input id="valor" type="text" class="form-control" placeholder="Valor">
+                <div id="valVal" class="invalid-feedback">
+                    Não pode ser vazio
+                </div>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-primary" onclick="adicionar()" >Adicionar</button>
+            </div>
+        </div>
     </div>
     <br>
     <br>
 
     <!-- listar contas -->
-    <table id="tabela" class="table container table-striped">
+    <table class="table container table-striped">
         <thead>
             <tr>
                 <th scope="col">Código</th>
@@ -49,54 +58,16 @@
                 <th scope="col">Valor</th>
             </tr>
         </thead>
-        <body>
-            <tr>
-                <th scope="row">1</th>
-                <td>ATIVO</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1.1</th>
-                <td class="grau2">ATIVO CIRCULANTE</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1.2</th>
-                <td class="grau2">ATIVO NÃO-CIRCULANTE</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>PASSIVO</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1.1</th>
-                <td class="grau2">PASSIVO CIRCULANTE</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">1.2</th>
-                <td class="grau2">PASSIVO NÃO-CIRCULANTE</td>
-                <td>0</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>PATRIMÔNIO LÍQUIDO</td>
-                <td>0</td>
-            </tr>
+        <tbody id="tabela">
+            
         </tbody>
     </table>
 
-
-    
-    
-
-    
-    
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous">
 	</script>
 	<script src="script.js"></script>
+    
 </body>
 
 </html>
+<!-- criado por porrólatras -->
