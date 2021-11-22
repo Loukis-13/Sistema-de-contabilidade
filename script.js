@@ -10,9 +10,14 @@ var contas = [
     ['2.3', 'PATRIMÔNIO LIQUIDO', 0]
 ]
 
+let x = window.localStorage.getItem('contas');
+if (x != null) contas = JSON.parse(x)
+else window.localStorage.setItem('contas', JSON.stringify(contas))
+
 function fazerTabela() {
     tabela.innerHTML = ""
     for (let i of contas) {
+        if (i[0] == "2") tabela.innerHTML += "<tr><th>&nbsp;</th><td>&nbsp;</td><td>&nbsp;</td></tr>"
         tabela.innerHTML += `
             <tr>
                 <th scope="row">${i[0]}</th>
@@ -96,19 +101,28 @@ function validacao() {
 }
 
 function adicionar() {
-    let codigo = document.getElementById("codigo").value
-    let descricao = document.getElementById("descricao").value
-    let valor = Number(document.getElementById("valor").value)
-
     if (!validacao()) return
+
+    let codigo = document.getElementById("codigo").value
+    let descricao = document.getElementById("descricao").value.toUpperCase()
+    let valor = Number(document.getElementById("valor").value)
 
     document.getElementById("codigo").value = ''
     document.getElementById("descricao").value = ''
     document.getElementById("valor").value = ''
 
+    let x = codigo.split('.')
+    if (x.length >= 4) {
+        x[3] = x[3].padStart(2, '0')
+    }
+    if (x.length >= 5) {
+        x[4] = x[4].padStart(3, '0')
+    }
+    codigo = x.join('.')
+
     inserir: {
-        for (let i=0; i<tabela.children.length; i++) {
-            if (tabela.children[i].children[0].innerHTML > codigo) {
+        for (let i=0; i<contas.length; i++) {
+            if (contas[i][0] > codigo) {
                 contas.splice(i, 0, [codigo, descricao, valor])
                 break inserir
             }
@@ -117,5 +131,20 @@ function adicionar() {
     }
 
     valores()
+    fazerTabela()
+    window.localStorage.setItem('contas', JSON.stringify(contas))
+}
+
+function reiniciar() {
+    contas = [
+        ['1', 'ATIVO', 0],
+        ['1.1', 'ATIVO CIRCULANTE', 0],
+        ['1.2', 'ATIVO NÃO-CIRCULANTE', 0],
+        ['2', 'PASSIVO', 0],
+        ['2.1', 'PASSIVO CIRCULANTE', 0],
+        ['2.2', 'PASSIVO NÃO-CIRCULANTE', 0],
+        ['2.3', 'PATRIMÔNIO LIQUIDO', 0]
+    ]
+    window.localStorage.setItem('contas', JSON.stringify(contas))
     fazerTabela()
 }
