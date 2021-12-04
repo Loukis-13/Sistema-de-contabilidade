@@ -3,3 +3,8 @@
 .grau3 { text-indent: 2em; }
 .grau4 { text-indent: 3em; }
 .grau5 { text-indent: 4em; }
+
+.nyan {
+    background-image: url('https://i.pinimg.com/originals/e1/9f/c4/e19fc4f92bc65978ceac0213a1abaf65.gif');
+    background-size: cover;
+}

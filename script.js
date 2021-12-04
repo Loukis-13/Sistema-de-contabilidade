@@ -148,3 +148,32 @@ function reiniciar() {
     window.localStorage.setItem('contas', JSON.stringify(contas))
     fazerTabela()
 }
+
+var nyannyan = 0
+function nyan() {
+    document.getElementById("table").classList.toggle("table-striped")
+    document.body.classList.toggle("nyan")
+    if (nyannyan) {
+        nyannyan = 0
+        fazerTabela()
+    } else {
+        nyannyan = 1
+        tabela_nyan()
+        
+    }
+}
+function tabela_nyan() {
+    let cores = ["primary", "success", "danger", "warning", "info"]
+
+    tabela.innerHTML = ""
+    for (let i of contas) {
+        if (i[0] == "2") tabela.innerHTML += "<tr><th>&nbsp;</th><td>&nbsp;</td><td>&nbsp;</td></tr>"
+        tabela.innerHTML += `
+            <tr class="bg-${cores[Math.floor(Math.random()*5)]}">
+                <th scope="row">${i[0]}</th>
+                <td class="grau${i[0].split('.').length}">${i[1]}</td>
+                <td>${i[2]}</td>
+            </tr>
+        `
+    }
+}
