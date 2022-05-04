@@ -10,9 +10,8 @@ var contas = [
     ['2.3', 'PATRIMÔNIO LIQUIDO', 0]
 ]
 
-let x = window.localStorage.getItem('contas');
-if (x != null) contas = JSON.parse(x)
-else window.localStorage.setItem('contas', JSON.stringify(contas))
+if ((x = localStorage.getItem('contas')) != null) contas = JSON.parse(x)
+else localStorage.setItem('contas', JSON.stringify(contas))
 
 function fazerTabela() {
     tabela.innerHTML = ""
@@ -156,9 +155,12 @@ function nyan() {
     if (nyannyan) {
         nyannyan = 0
         fazerTabela()
+        document.getElementById('nyan').pause()
+        document.getElementById('nyan').currentTime = 0
     } else {
         nyannyan = 1
         tabela_nyan()
+        document.getElementById('nyan').play()
         
     }
 }
